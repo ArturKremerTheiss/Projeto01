@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -18,9 +19,9 @@ public class TelaLogin extends JFrame {
 	private JTextField txUsuario;
 	private JTextField txSenha;
 
-	private String usuario = "artur";
+	private String user = "artur";
 	private String senha = "1234";
-	private Usuario usuario;
+	private ClasseTelaLogin usuario;
 
 	/**
 	 * Launch the application.
@@ -44,7 +45,7 @@ public class TelaLogin extends JFrame {
 	public TelaLogin() {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 291, 238);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -74,7 +75,13 @@ public class TelaLogin extends JFrame {
 		btEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				usuario = new ClasseTelaLogin(txUsuario.getText(), txSenha.getText());
 				
+				if(usuario.getUsuario().equals(user) && usuario.getSenha().equals(senha)) {
+					JOptionPane.showMessageDialog(null, "Entrando no sistema ...");
+				}else {
+					JOptionPane.showMessageDialog(null, "Acesso negado");
+				}
 				
 			}
 		});
